@@ -4,11 +4,11 @@
 
 其实React router已经给出了解决办法，这里要用到一个额外的库 [history](https://github.com/ReactTraining/history "history") 具体用法如下：
 
-安装
+> 安装
 
 可以通过npm包管理器安装 `npm i history --save` 或者通过yarn包管理器安装 `yarn add history`
 
-引入
+>引入
 
 可以通过CommonJS的方式引入
 ```javascript
@@ -23,7 +23,7 @@ import { createBrowserHistory } from 'history';
 <script src="history.min.js"></script>
 ```
 
-使用
+>使用
 
 首先创建history对象，通过代码：
 ```javascript
@@ -41,12 +41,13 @@ const history = createBrowserHistory();
 class App extends Component {
     render() {
         return (
-		    // 外部控制的<BrowserRouter>替换为<Router>，并将创建的history对象作为props传递给<Router>组件
+		// 外部控制的<BrowserRouter>替换为<Router>，并将创建的history对象作为props传递给<Router>组件
             <Router history={history}>
                 <div className="body">
                     <Route path="/login" component={Login} />
                     <Route path="/main" render={props => {
                         return (
+						//BrowserRouter依旧有效
                             <BrowserRouter basename="/main">
                                 <div className="App">
                                     <NavBar />
